@@ -19,6 +19,8 @@ public class SlotCarController : MonoBehaviour
     public Quaternion goalRotation;
     public float steering;
 
+    public Transform spawnPoint;
+
     // finds the corresponding visual wheel
     // correctly applies the transform
     public void ApplyLocalPositionToVisuals(WheelCollider collider)
@@ -58,6 +60,14 @@ public class SlotCarController : MonoBehaviour
             }
             ApplyLocalPositionToVisuals(axleInfo.leftWheel);
             ApplyLocalPositionToVisuals(axleInfo.rightWheel);
+        }
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R)) {
+            transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
+            GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         }
     }
 
