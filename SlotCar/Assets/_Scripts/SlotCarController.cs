@@ -16,6 +16,8 @@ public class SlotCarController : MonoBehaviour
     public List<AxleInfo> axleInfos;
     public float maxMotorTorque;
     public float maxSteeringAngle;
+    public Quaternion goalRotation;
+    public float steering;
 
     // finds the corresponding visual wheel
     // correctly applies the transform
@@ -39,7 +41,8 @@ public class SlotCarController : MonoBehaviour
     public void FixedUpdate()
     {
         float motor = maxMotorTorque * Input.GetAxis("Vertical");
-        float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
+        float turnDif = (goalRotation.eulerAngles.y - transform.rotation.eulerAngles.y);
+        steering = turnDif;
 
         foreach (AxleInfo axleInfo in axleInfos)
         {
@@ -56,5 +59,10 @@ public class SlotCarController : MonoBehaviour
             ApplyLocalPositionToVisuals(axleInfo.leftWheel);
             ApplyLocalPositionToVisuals(axleInfo.rightWheel);
         }
+    }
+
+    public void setGoalRotation(Quaternion rot) {
+        //print("Set!");
+        goalRotation = rot;
     }
 }
