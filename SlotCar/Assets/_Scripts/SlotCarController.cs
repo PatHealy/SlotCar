@@ -26,6 +26,7 @@ public class SlotCarController : MonoBehaviour
 
     public ParticleSystem ps;
     public ParticleSystem rs;
+    public int playNum;
 
     // finds the corresponding visual wheel
     // correctly applies the transform

@@ -9,6 +9,8 @@ TagManager:
   - Straight
   - Turn
   - Spawn
+  - BlueSpawn
+  - RedSpawn
   layers:
   - Default
   - TransparentFX

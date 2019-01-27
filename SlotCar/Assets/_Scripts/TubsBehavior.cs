@@ -5,12 +5,13 @@ using UnityEngine.AI;
 
 public class TubsBehavior : MonoBehaviour {
     NavMeshAgent ai;
-    public Transform dest;
+    public Transform[] dest;
     public float threshold;
     Animator anim;
     float stopTime = -1.0f;
     float maxSpeed;
     float maxASpeed;
+    Transform d;
 
 	// Use this for initialization
 	void Start () {
@@ -18,12 +19,31 @@ public class TubsBehavior : MonoBehaviour {
         anim = gameObject.GetComponent<Animator>();
         maxSpeed = ai.speed;
         maxASpeed = ai.angularSpeed;
+        ai.destination = dest[0].position;
+        StartCoroutine(shiftTarget());
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        ai.destination = dest.position;
-        float dist = Vector3.Distance(transform.position, dest.position);
+
+    IEnumerator shiftTarget()
+    {
+        while (true) {
+            yield return new WaitForSeconds(10f);
+            float nm = Random.Range(0, 2);
+            if(nm > 0.5) {
+                d = dest[0];
+                print("Go 0!");
+            }
+            else
+            {
+                d = dest[1];
+                print("Go 1!");
+            }
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
+        ai.destination = d.position;
+        float dist = Vector3.Distance(transform.position, d.position);
         if (dist < threshold) {
             ai.speed = 0f;
             ai.angularSpeed = 0f;
