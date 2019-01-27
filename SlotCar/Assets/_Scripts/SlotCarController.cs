@@ -24,6 +24,9 @@ public class SlotCarController : MonoBehaviour
     public string inpA;
     public string inpR;
 
+    public ParticleSystem ps;
+    public ParticleSystem rs;
+
     // finds the corresponding visual wheel
     // correctly applies the transform
     public void ApplyLocalPositionToVisuals(WheelCollider collider)
@@ -50,6 +53,11 @@ public class SlotCarController : MonoBehaviour
             motor = 0;
         float turnDif = (goalRotation.eulerAngles.y - transform.rotation.eulerAngles.y);
         steering = turnDif;
+
+        if (motor > maxMotorTorque / 10f && Random.Range(0,10) == 6)
+        {
+            ps.Emit(1);
+        }
 
         foreach (AxleInfo axleInfo in axleInfos)
         {
@@ -79,6 +87,7 @@ public class SlotCarController : MonoBehaviour
     }
 
     public void resetCar() {
+        rs.Emit(30);
         GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         foreach (AxleInfo axleInfo in axleInfos)
         {
@@ -92,13 +101,13 @@ public class SlotCarController : MonoBehaviour
     }
 
     public IEnumerator replaceCar()
-    {
+    { 
         MeshRenderer[] mr = gameObject.GetComponentsInChildren<MeshRenderer>();
         foreach(MeshRenderer m in mr) {
             m.enabled = false;
         }
 
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(1f);
 
         foreach (AxleInfo axleInfo in axleInfos)
         {
@@ -113,7 +122,7 @@ public class SlotCarController : MonoBehaviour
         {
             m.enabled = true;
         }
-
+        rs.Emit(30);
         transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
     }
 
