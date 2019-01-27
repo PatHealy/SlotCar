@@ -12,6 +12,9 @@ public class TurnController : MonoBehaviour
         {
             cc.setGoalRotation(other.gameObject.transform.rotation);
         }
+        else if (other.gameObject.tag.Equals("Spawn")) {
+            cc.spawnPoint = other.gameObject.transform;
+        }
     }
 
 }

@@ -8,6 +8,7 @@ TagManager:
   - RightTurn
   - Straight
   - Turn
+  - Spawn
   layers:
   - Default
   - TransparentFX
