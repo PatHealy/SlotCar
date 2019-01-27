@@ -6,13 +6,67 @@ using UnityEngine.AI;
 public class TubsBehavior : MonoBehaviour {
     NavMeshAgent ai;
     public Transform dest;
+    public float threshold;
+    Animator anim;
+    float stopTime = -1.0f;
+    float maxSpeed;
+    float maxASpeed;
+
 	// Use this for initialization
 	void Start () {
         ai = gameObject.GetComponent<NavMeshAgent>();
+        anim = gameObject.GetComponent<Animator>();
+        maxSpeed = ai.speed;
+        maxASpeed = ai.angularSpeed;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         ai.destination = dest.position;
-	}
+        float dist = Vector3.Distance(transform.position, dest.position);
+        if (dist < threshold) {
+            ai.speed = 0f;
+            ai.angularSpeed = 0f;
+            anim.SetFloat("Move", 0);
+            if(stopTime < 0) {
+                stopTime = Time.fixedTime;
+            }
+            else {
+                float timeSinceStop = Time.fixedTime - stopTime;
+                if(timeSinceStop > 5) {
+                    anim.SetBool("Sit", true);
+                }
+            }
+        }
+        else
+        {
+            ai.angularSpeed = maxASpeed;
+            stopTime = -1f;
+            anim.SetBool("Sit", false);
+            if(dist > 30f) {
+                anim.SetFloat("Move", 5);
+                ai.speed = maxSpeed*4;
+            }
+            else if (dist > 20f)
+            {
+                anim.SetFloat("Move", 4);
+                ai.speed = maxSpeed*3;
+            }
+            else if (dist > 15f)
+            {
+                anim.SetFloat("Move", 3);
+                ai.speed = maxSpeed*2;
+            }
+            else if (dist > 10f)
+            {
+                anim.SetFloat("Move", 2);
+                ai.speed = maxSpeed;
+            }
+            else
+            {
+                anim.SetFloat("Move", 1);
+                ai.speed = maxSpeed;
+            }
+        }
+    }
 }

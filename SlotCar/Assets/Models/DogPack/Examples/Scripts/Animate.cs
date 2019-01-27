@@ -7,7 +7,7 @@ public class Animate : MonoBehaviour {
 
 	private Animator anim;
 	private string AnimatorName;
-	private int Move;
+	public int Move;
 	int Pose = 0;
 	int CurrentPose = 0;
 	bool ChangePose = false;
@@ -15,21 +15,9 @@ public class Animate : MonoBehaviour {
 	//public GameObject target;
 	private string CurrentButtonPressed = "Stand";
 
-	private GameObject AggressiveButton;
-	private GameObject LayButton;
-	private GameObject StandButton;
-	private GameObject SitButton;
-	private GameObject ConsumeButton;
-
 	private float CrossfadeVal = 0.25f;
 	void Start () 
 	{
-		AggressiveButton = GameObject.Find("Aggressive");
-		LayButton = GameObject.Find("Lay");
-		StandButton = GameObject.Find("Stand");
-		SitButton = GameObject.Find("Sit");
-		ConsumeButton = GameObject.Find("Consume");
-
 		anim = GetComponent<Animator> ();
 		AnimatorName = anim.name;
 		print ("name " + AnimatorName);
@@ -128,7 +116,7 @@ public class Animate : MonoBehaviour {
 			ChangePose = true;
 			ResetButtonNames ();
 		}else {
-			anim.CrossFade (AnimatorName + StandButton.GetComponentInChildren<Text> ().text, 0.5f);
+			anim.CrossFade (AnimatorName + "Stand", 0.5f);
 		}
 		Move = 0;
 		anim.SetFloat ("Move", Move);
@@ -141,7 +129,7 @@ public class Animate : MonoBehaviour {
 			ChangePose = true;
 			ResetButtonNames ();
 		}else {
-			anim.CrossFade (AnimatorName + SitButton.GetComponentInChildren<Text> ().text, 0.5f);
+			anim.CrossFade (AnimatorName + "Sit", 0.5f);
 		}
 		Move = 0;
 		CurrentButtonPressed = "Sit";
@@ -154,7 +142,7 @@ public class Animate : MonoBehaviour {
 			ChangePose = true;
 			ResetButtonNames ();
 		}else {
-			anim.CrossFade (AnimatorName + LayButton.GetComponentInChildren<Text> ().text, 0.5f);
+			anim.CrossFade (AnimatorName + "Lay", 0.5f);
 		}
 
 
@@ -170,7 +158,7 @@ public class Animate : MonoBehaviour {
 			ChangePose = true;
 			ResetButtonNames ();
 		} else {
-			anim.CrossFade (AnimatorName + ConsumeButton.GetComponentInChildren<Text> ().text, 0.5f);
+			anim.CrossFade (AnimatorName + "Consume", 0.5f);
 		}
 		Move = 0;
 		anim.SetFloat ("Move", Move);
@@ -184,7 +172,7 @@ public class Animate : MonoBehaviour {
 			ChangePose = true;
 			ResetButtonNames ();
 		} else {
-			anim.CrossFade (AnimatorName + AggressiveButton.GetComponentInChildren<Text> ().text, 0.5f);
+			anim.CrossFade (AnimatorName + "Aggressive", 0.5f);
 		}
 		Move = 0;
 		anim.SetFloat ("Move", Move);
@@ -216,9 +204,9 @@ public class Animate : MonoBehaviour {
 	}
 	void ResetButtonNames()
 	{
-		GameObject ButtonToReset = GameObject.Find(CurrentButtonPressed);
+		/*GameObject ButtonToReset = GameObject.Find(CurrentButtonPressed);
 		ButtonToReset.GetComponentInChildren<Text> ().text = CurrentButtonPressed;
 		print ("change button name and it is now " + ButtonToReset.GetComponentInChildren<Text> ().text);
-		ButtonToReset.GetComponentInChildren<ChangeButtonText> ().ValuetoGet = 0;
+		ButtonToReset.GetComponentInChildren<ChangeButtonText> ().ValuetoGet = 0;*/
 	}
 }
