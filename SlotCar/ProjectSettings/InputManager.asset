@@ -38,11 +38,27 @@ InputManager:
     axis: 5
     joyNum: 1
   - serializedVersion: 3
+    m_Name: joystick 1 axis 4
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: down
+    positiveButton: up
+    altNegativeButton: s
+    altPositiveButton: w
+    gravity: 3
+    dead: 0.001
+    sensitivity: 3
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 3
+    joyNum: 1
+  - serializedVersion: 3
     m_Name: joystick 1 button 4
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 1 button 5
+    positiveButton: joystick 1 button 4
     altNegativeButton: 
     altPositiveButton: mouse 0
     gravity: 1000

@@ -30,19 +30,20 @@ public class TubsBehavior : MonoBehaviour {
             float nm = Random.Range(0, 2);
             if(nm > 0.5) {
                 d = dest[0];
-                print("Go 0!");
+                //print("Go 0!");
             }
             else
             {
                 d = dest[1];
-                print("Go 1!");
+                //print("Go 1!");
             }
         }
     }
 
     // Update is called once per frame
     void Update () {
-        ai.destination = d.position;
+        if(d != null)
+            ai.destination = d.position;
         float dist = Vector3.Distance(transform.position, d.position);
         if (dist < threshold) {
             ai.speed = 0f;
