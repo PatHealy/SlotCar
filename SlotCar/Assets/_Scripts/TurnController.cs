@@ -10,7 +10,6 @@ public class TurnController : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Turn"))
         {
-            //print("Turn left!");
             cc.setGoalRotation(other.gameObject.transform.rotation);
         }
     }
