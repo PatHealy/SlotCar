@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2224,12 +2224,12 @@ Prefab:
     - target: {fileID: 114376649528817468, guid: 8c06a0dba7cad4d25a5a0b2b643e7f09,
         type: 2}
       propertyPath: inpR
-      value: joystick 1 button 5
+      value: joystick 1 button 4
       objectReference: {fileID: 0}
     - target: {fileID: 114376649528817468, guid: 8c06a0dba7cad4d25a5a0b2b643e7f09,
         type: 2}
       propertyPath: inpA
-      value: joystick 1 axis 7
+      value: joystick 1 axis 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c06a0dba7cad4d25a5a0b2b643e7f09, type: 2}
@@ -5429,7 +5429,7 @@ Prefab:
     - target: {fileID: 114376649528817468, guid: 8c06a0dba7cad4d25a5a0b2b643e7f09,
         type: 2}
       propertyPath: inpR
-      value: joystick 1 button 4
+      value: joystick 1 button 5
       objectReference: {fileID: 0}
     - target: {fileID: 114376649528817468, guid: 8c06a0dba7cad4d25a5a0b2b643e7f09,
         type: 2}
